@@ -1,0 +1,16 @@
+{
+  "name": "socketio",
+  "version": "1.0.0",
+  "description": "Chat usig MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Saul Augusto Gasca Farrera",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.3.4",
+    "nodemon": "^1.19.4",
+    "socket.io": "^2.3.0"
+  }
+}
