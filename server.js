@@ -1,5 +1,5 @@
 const  mongo = require('mongodb').MongoClient;
-const client = require('socket.io').listen(4000).sockets;
+const client = require('socket.io').listen(27017).sockets;
 
 //Connect to mongodb
 mongo.connect('mongodb://127.0.0.1/mongochat',(err, db) =>{
@@ -10,7 +10,7 @@ mongo.connect('mongodb://127.0.0.1/mongochat',(err, db) =>{
     console.log('MongoDB connected succefully');
 
     //Connect to socket io
-    client.on('connection', ()=>{
+    client.on('connection', (socket)=>{
         let chat = db.collection('chats');
 
          //create function to send status
@@ -59,7 +59,7 @@ mongo.connect('mongodb://127.0.0.1/mongochat',(err, db) =>{
     //Handle clear
     socket.on('clear',(data)=>{
         //Remove all chats from collection
-        chat._.remove({},()=>{
+        chat.remove({},()=>{
             //emit cleared
             socket.emit('cleared');
         });
@@ -67,4 +67,5 @@ mongo.connect('mongodb://127.0.0.1/mongochat',(err, db) =>{
 
     });
    
-});
+}); 
+
